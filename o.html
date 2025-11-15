@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Bildtabelle</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+    
+    .large-box {
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    margin-top: 30px;
+    }
+
+    .empty-cell {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+    border-radius: 8px;
+    margin: 0 auto;
+    }
+
+    .large-table img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    cursor: default;
+    }
+
+
+    .image-box {
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    }
+
+    .large-table td {   
+    width: 110px;           /* Feste Breite */
+    height: 110px;          /* Feste Höhe */
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    }
+
+    .container {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .large-table td img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    cursor: default;
+    display: block;
+    margin: 0 auto;
+    }
+
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+    }
+
+    td {
+      padding: 5px;
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+
+    .row-5 {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .large-box {
+    border: 2px solid #ccc;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    margin-top: 30px;
+    }
+
+    .large-table {
+    table-layout: fixed;    /* Fixierte Spaltenbreite */
+    width: 440px;           /* 4 Spalten × 110px pro Spalte (100px Bild + 2×5px Padding) */
+    border-collapse: collapse;
+    margin: 0 auto;
+    }
+
+    .detail-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px; /* Abstand zwischen der unteren Tabelle und der rechten Box */
+  margin-top: 30px;
+}
+
+.side-box {
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+}
+
+.sub-detail-table {
+  border-collapse: collapse;
+}
+
+.sub-detail-table td {
+  width: 90px;
+  height: 100px;
+  border: 1px solid #ddd;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #f3f3f3;
+}
+
+.sub-detail-table img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+
+  </style>
+
+</head>
+<body>
+  <div class="container">
+    <div class="image-box">
+    <table>
+
+      <tr>
+        <td><img src="Primaer/Ancient_Claw_Icon.webp" alt="Bild 1" data-id="1" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Big_Eyeball_Icon.webp" alt="Bild 2" data-id="2" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Bone_Pile_Icon.webp" alt="Bild 3" data-id="3" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Broken_Heart_Icon.webp" alt="Bild 4" data-id="4" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Burlap_Sack_Icon.webp" alt="Bild 5" data-id="5" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Caustic_Juice_Icon.webp" alt="Bild 6" data-id="6" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Chains_Icon.webp" alt="Bild 7" data-id="7" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Clown_Shoes_Icon.webp" alt="Bild 8" data-id="8" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Dark_Seaweed_Icon.webp" alt="Bild 9" data-id="9" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Dragon_Egg_Icon.webp" alt="Bild 10" data-id="10" onclick="handleClick(this)"></td>
+      </tr>
+
+      <tr>
+        <td><img src="Primaer/Empty_Jar_Icon.webp" alt="Bild 11" data-id="11" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Evil_Tome_Icon.webp" alt="Bild 12" data-id="12" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Floodlight_Icon.webp" alt="Bild 13" data-id="13" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Foul_Slime_Icon.webp" alt="Bild 14" data-id="14" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Fresh_Brain_Icon.webp" alt="Bild 15" data-id="15" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Gas_Can_Icon.webp" alt="Bild 16" data-id="16" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Honeycomb_Icon.webp" alt="Bild 17" data-id="17" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Horned_Skull_Icon.webp" alt="Bild 18" data-id="18" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Horrid_Tentacle_Icon.webp" alt="Bild 19" data-id="19" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Infested_Log_Icon.webp" alt="Bild 20" data-id="20" onclick="handleClick(this)"></td>
+      </tr>
+
+       <tr>
+        <td><img src="Primaer/Jumper_Cables_Icon.webp" alt="Bild 21" data-id="21" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Leviathan_Flesh_Icon.webp" alt="Bild 22" data-id="22" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Manacles_Icon.webp" alt="Bild 23" data-id="23" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Metal_Platter_Icon.webp" alt="Bild 24" data-id="24" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Mud_Bucket_Icon.webp" alt="Bild 25" data-id="25" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Mutant_Larva_Icon.webp" alt="Bild 26" data-id="26" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Power_Crystal_Icon.webp" alt="Bild 27" data-id="27" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Pumpkin_Icon.webp" alt="Bild 28" data-id="28" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Rattlesnake_Icon.webp" alt="Bild 29" data-id="29" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Rotary_Engine_Icon.webp" alt="Bild 30" data-id="30" onclick="handleClick(this)"></td>
+      </tr>
+
+      <tr>
+        <td><img src="Primaer/Rotten_Fish_Icon.webp" alt="Bild 31" data-id="31" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Rusty_Hook_Icon.webp" alt="Bild 32" data-id="32" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Saw_Blade_Icon.webp" alt="Bild 33" data-id="33" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Scary_Mask_Icon.webp" alt="Bild 34" data-id="34" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Scrap_Heap_Icon.webp" alt="Bild 35" data-id="35" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Sharp_Fang_Icon.webp" alt="Bild 36" data-id="36" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Shrunken_Head_Icon.webp" alt="Bild 37" data-id="37" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Spiked_Club_Icon.webp" alt="Bild 38" data-id="38" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Spiny_Crab_Icon.webp" alt="Bild 39" data-id="39" onclick="handleClick(this)"></td>
+        <td><img src="Primaer/Stag_Beetle_Icon.webp" alt="Bild 40" data-id="40" onclick="handleClick(this)"></td>
+      </tr>
+
+    </table>
+
+    <div class="row-5">
+      <img src="Primaer/Thick_Pelt_Icon.webp" alt="Bild 41" data-id="41" onclick="handleClick(this)">
+      <img src="Primaer/Thick_Pipe_Icon.webp" alt="Bild 42" data-id="42" onclick="handleClick(this)">
+      <img src="Primaer/Turbine_Icon.webp" alt="Bild 43" data-id="43" onclick="handleClick(this)">
+      <img src="Primaer/Wolf_Blood_Icon.webp" alt="Bild 44" data-id="44" onclick="handleClick(this)">
+      <img src="Primaer/Wrestler_Mask_Icon.webp" alt="Bild 45" data-id="45" onclick="handleClick(this)">
+    </div>
+
+<div class="detail-section">
+  <div class="large-box">
+    <table id="detail-table" class="large-table"></table>
+  </div>
+        <!-- Dynamisch per JavaScript gefüllt -->
+  <div class="side-box">
+    <table id="sub-detail-table" class="sub-detail-table"></table>
+  </div>
+</div>
+
+</div>
+
+        <script>
+        const ingredientMapping = {
+        "1": [
+            { row: 0, col: 0, img: "Parts/Spinosaur_Head.webp" },
+            { row: 0, col: 1, img: "Parts/Spinosaur_Body.webp" },
+            { row: 0, col: 2, img: "Parts/Spinosaur_Arm.webp" },
+            { row: 0, col: 3, img: "Parts/Spinosaur_Legs.webp" }
+        ],
+        "2": [
+            { row: 2, col: 0, img: "Parts/Tiny_Eye.webp" },
+            { row: 2, col: 2, img: "Parts/Sight_Blaster.webp" }
+        ],
+        "3": [
+            { row: 2, col: 1, img: "Parts/Brittle_Cage.webp" },
+            { row: 2, col: 2, img: "Parts/Calcified_Claw.webp" },
+            { row: 2, col: 3, img: "Parts/Harpy_Legs_Large_Icon.webp" }
+        ],
+        "4": [
+            { row: 2, col: 0, img: "Parts/Wild_Unicorn.webp" },
+            { row: 2, col: 2, img: "Parts/Basilard_Arm-0.webp" },
+            { row: 1, col: 1, img: "Parts/Taped_Chest.webp" },
+            { row: 2, col: 1, img: "Parts/Bitter_Oni-0.webp" }
+        ],
+        "5": [
+            { row: 1, col: 0, img: "Parts/Trash_Bag_Head_Large_Icon.webp" },
+            { row: 2, col: 1, img: "Parts/Sack_of_Saliva_Large_Icon.webp" },
+            { row: 2, col: 2, img: "Parts/Scareclaw.webp" }
+        ],
+        "6": [
+            { row: 0, col: 2, img: "Parts/Mortar_Mark_I_Large_Icon.webp" },
+            { row: 0, col: 1, img: "Parts/Dipole_Core-0.webp" },
+            { row: 1, col: 0, img: "Parts/Midget_Mask.webp" },
+            { row: 1, col: 1, img: "Parts/Leashed_Body.webp" },
+            { row: 2, col: 3, img: "Parts/Pebble_Floatter.webp" },
+            { row: 2, col: 2, img: "Parts/Enchanter_Arm_Large_Icon.webp" }
+        ],
+        "7": [
+            { row: 2, col: 3, img: "Parts/Goblin_Legs.webp" },
+            { row: 0, col: 2, img: "Parts/Rip_Saw.webp" }
+        ],
+        "8": [
+            { row: 0, col: 0, img: "Parts/Rousty_Head.webp" },
+            { row: 0, col: 1, img: "Parts/Rousty_Torso.webp" },
+            { row: 0, col: 2, img: "Parts/Rousty_Mallet.webp" },
+            { row: 0, col: 3, img: "Parts/Rousty_Feet_Large_Icon.webp" }
+        ],
+        "9": [
+            { row: 0, col: 2, img: "Parts/Fluke_Anchor_Large_Icon.webp" },
+            { row: 1, col: 2, img: "Parts/Gray_whale_tail.webp" },
+            { row: 2, col: 2, img: "Parts/Typhoon_Arm_Large_Icon.webp" }
+        ],
+        "10": [
+            { row: 1, col: 2, img: "Parts/Abnormal_Arm.webp" },
+            { row: 2, col: 0, img: "Parts/Fallen_Cherub_Large_Icon.webp" }
+        ],
+        "11": [
+            { row: 2, col: 0, img: "Parts/10_Meter_Helmet_Large_Icon.webp" },
+            { row: 0, col: 2, img: "Parts/Amber_Cutter.webp" },
+            { row: 1, col: 0, img: "Parts/Bottled_Mind.webp" }
+        ],
+        "12": [
+            { row: 2, col: 0, img: "Parts/Dark_Shroud_Large_Icon.webp" },
+            { row: 2, col: 3, img: "Parts/Shadow_Floater.webp" }
+        ],
+        "13": [
+            { row: 0, col: 0, img: "Parts/Goofbot.webp" },
+            { row: 0, col: 1, img: "Parts/Truck_Rig.webp" }
+        ],
+        "14": [
+            { row: 1, col: 0, img: "Parts/Tadpole_Head_Large_Icon.webp" },
+            { row: 1, col: 2, img: "Parts/Sharp_Claw.webp" },
+            { row: 2, col: 2, img: "Parts/Siren_Arm.webp" }
+        ],
+        "15": [
+            { row: 0, col: 0, img: "Parts/Brainiac.webp" },
+            { row: 1, col: 1, img: "Parts/Repulsive_Chest_Large_Icon.webp" },
+            { row: 2, col: 0, img: "Parts/Decayed_Head_Large_Icon.webp" }
+        ],
+        "16": [
+            { row: 0, col: 3, img: "Parts/Engine_Floater.webp" },
+            { row: 0, col: 2, img: "Parts/Flamer_Mark_I.webp" },
+            { row: 0, col: 1, img: "Parts/Crawler_Body.webp" },
+            { row: 1, col: 0, img: "Parts/Steam_Mask.webp" },
+            { row: 1, col: 3, img: "Parts/Air_Floater.webp" },
+            { row: 1, col: 1, img: "Parts/Pudgy_Body.webp" },
+            { row: 2, col: 2, img: "Parts/Elysum_Shooter.webp" }
+        ],
+        "17": [
+            { row: 0, col: 3, img: "Parts/Cricket_Legs.webp" },
+            { row: 1, col: 2, img: "Parts/Mosquito_Arm.webp" },
+            { row: 1, col: 1, img: "Parts/Inchworm_Body.webp" }
+        ],
+        "18": [
+            { row: 0, col: 0, img: "Parts/Raider_Large_Icon.webp" },
+            { row: 2, col: 0, img: "Parts/Leopard_Skull_Large_Icon.webp" }
+        ],
+        "19": [
+            { row: 0, col: 3, img: "Parts/Mechano_Floater.webp" },
+            { row: 0, col: 2, img: "Parts/Feeler_Arm.webp" },
+            { row: 1, col: 0, img: "Parts/Resting_Xulu_Large_Icon.webp" },
+            { row: 1, col: 3, img: "Parts/Octopus_Legs_Large_Icon.webp" },
+            { row: 1, col: 2, img: "Parts/Octopus_Arm_Large_Icon.webp" }
+        ],
+        "20": [
+            { row: 1, col: 0, img: "Parts/Deer_Antlers_Large_Icon.webp" },
+            { row: 1, col: 3, img: "Parts/Stomper_Legs.webp" },
+            { row: 1, col: 2, img: "Parts/Inchworm_Arm.webp" }
+        ],
+        "21": [
+            { row: 0, col: 0, img: "Parts/Tube_TV.webp" },
+            { row: 0, col: 2, img: "Parts/Laser.webp" },
+            { row: 0, col: 1, img: "Parts/Fission_Core_Large_Icon.webp" },
+            { row: 1, col: 3, img: "Parts/Implant_Legs.webp" },
+            { row: 2, col: 2, img: "Parts/Conductor_Arm.webp" }
+        ],
+        "22": [
+            { row: 0, col: 0, img: "Parts/Mechano_Cow_Large_Icon.webp" },
+            { row: 1, col: 0, img: "Parts/Taped_Head_Large_Icon.webp" },
+            { row: 1, col: 3, img: "Parts/Wrecked_Legs.webp" },
+            { row: 1, col: 2, img: "Parts/Fruit_Bat_Arm.webp" },
+            { row: 2, col: 2, img: "Parts/Undead_Arm.webp" }
+        ],
+        "23": [
+            { row: 0, col: 2, img: "Parts/Construct_Arm.webp" },
+            { row: 1, col: 3, img: "Parts/Captive_Legs.webp" },
+            { row: 2, col: 3, img: "Parts/Genie_Floater_Large_Icon.webp" },
+            { row: 2, col: 2, img: "Parts/Spirit_Arm.webp" },
+            { row: 2, col: 1, img: "Parts/Imp_Body.webp" }
+        ],
+        "24": [
+            { row: 0, col: 0, img: "Parts/UAV_Head_Large_Icon.webp" },
+            { row: 0, col: 3, img: "Parts/Gearwork_Legs_Large_Icon.webp" },
+            { row: 0, col: 2, img: "Parts/Buckler_Shield_Large_Icon.webp" },
+            { row: 0, col: 1, img: "Parts/Kiln_Rig_Large_Icon.webp" },
+            { row: 1, col: 0, img: "Parts/Plated_Jaw_Large_Icon.webp" },
+            { row: 1, col: 2, img: "Parts/Stone_Hacker_Large_Icon.webp" },
+            { row: 1, col: 1, img: "Parts/Lead_Shoulder_Large_Icon.webp" },
+            { row: 2, col: 2, img: "Parts/Magical_Knight_Large_Icon.webp" },
+            { row: 2, col: 1, img: "Parts/Scalemail_Body_Large_Icon.webp" }
+        ],
+        "25": [
+            { row: 2, col: 3, img: "Parts/Mud_Legs_Large_Icon.webp" },
+            { row: 0, col: 2, img: "Parts/Aerated_Block_Large_Icon.webp" },
+            { row: 2, col: 2, img: "Parts/Ogre_Arm_Large_Icon.webp" },
+            { row: 2, col: 1, img: "Parts/Etched_Torso.webp" }
+        ],
+        "26": [
+            { row: 1, col: 3, img: "Parts/Root_Legs_Large_Icon.webp" },
+            { row: 1, col: 2, img: "Parts/Pitcher_Trap.webp" },
+            { row: 1, col: 1, img: "Parts/Larva_Body_Large_Icon.webp" }
+        ],
+        "27": [
+            { row: 0, col: 0, img: "Parts/Trooper.webp" },
+            { row: 2, col: 0, img: "Parts/Calcite_Head.webp" },
+            { row: 2, col: 3, img: "Parts/Calcite_Floater.webp" },
+            { row: 2, col: 2, img: "Parts/Calcite_Arm.webp" },
+            { row: 2, col: 1, img: "Parts/Calcite_Core.webp" }
+        ],
+        "28": [
+            { row: 0, col: 0, img: "Parts/Turnip_Head_Large_Icon.webp" },
+            { row: 1, col: 2, img: "Parts/Seed_Whipper.webp" },
+            { row: 2, col: 2, img: "Parts/Seer_Arm.webp" }
+        ],
+        "29": [
+            { row: 1, col: 2, img: "Parts/Rattlesnake_Arm.webp" },
+            { row: 1, col: 1, img: "Parts/Gecko_Body_Large_Icon.webp" },
+            { row: 2, col: 3, img: "Parts/Serpent_Floater.webp" },
+            { row: 2, col: 1, img: "Parts/Gargoyle_Body.webp" }
+        ],
+        "30": [
+            { row: 0, col: 3, img: "Parts/2-Stroke_Legs.webp" },
+            { row: 0, col: 2, img: "Parts/Bow_Drill_Arm.webp" },
+            { row: 0, col: 1, img: "Parts/Model_A_Chassis.webp" }
+        ],
+        "31": [
+            { row: 1, col: 0, img: "Parts/Triton_Head.webp" },
+            { row: 1, col: 3, img: "Parts/Triton_Fins.webp" },
+            { row: 1, col: 2, img: "Parts/Triton_Arm_Large_Icon.webp" },
+            { row: 1, col: 1, img: "Parts/Triton_Chest.webp" }
+        ],
+        "32": [
+            { row: 0, col: 2, img: "Parts/Harvester_Arm_Large_Icon.webp" },
+            { row: 2, col: 2, img: "Parts/Privateer_Arm.webp" }
+        ],
+        "33": [
+            { row: 0, col: 2, img: "Parts/Circular_Saw.webp" },
+            { row: 1, col: 2, img: "Parts/Knife_Arm_Large_Icon.webp" }
+        ],
+        "34": [
+            { row: 0, col: 0, img: "Parts/Krypteia_Helmet_Large_Icon.webp" },
+            { row: 2, col: 0, img: "Parts/Demon_Shudo.webp" }
+        ],
+        "35": [
+            { row: 0, col: 0, img: "Parts/Exhaust_Plate_Large_Icon.webp" },
+            { row: 0, col: 3, img: "Parts/Plodder_Feet_Large_Icon.webp" },
+            { row: 0, col: 2, img: "Parts/Stacker_Crane_Large_Icon.webp" }
+        ],
+        "36": [
+            { row: 2, col: 0, img: "Parts/Thrall_Head.webp" },
+            { row: 1, col: 3, img: "Parts/Stem_Floater_Large_Icon.webp" },
+            { row: 1, col: 2, img: "Parts/Burr_Shark_Arm_Large_Icon.webp" }
+        ],
+        "37": [
+            { row: 2, col: 0, img: "Parts/Tiki_Mask.webp" },
+            { row: 2, col: 2, img: "Parts/Imp_Arm_Large_Icon.webp" }
+        ],
+        "38": [
+            { row: 0, col: 2, img: "Parts/Spanner_Wrench.webp" },
+            { row: 1, col: 2, img: "Parts/Club_Arm_Large_Icon.webp" },
+            { row: 2, col: 2, img: "Parts/Mace_Arm.webp" }
+        ],
+        "39": [
+            { row: 0, col: 2, img: "Parts/C-Clamp_Arm_Large_Icon.webp" },
+            { row: 1, col: 2, img: "Parts/Crawfish_Claw_Large_Icon.webp" }
+        ],
+        "40": [
+            { row: 2, col: 0, img: "Parts/Ancient_Head.webp" },
+            { row: 2, col: 3, img: "Parts/Ancient_Legs.webp" },
+            { row: 2, col: 2, img: "Parts/Ancient_Knife.webp" },
+            { row: 2, col: 1, img: "Parts/Ancient_Torso.webp" },
+            { row: 1, col: 2, img: "Parts/Burning_Stinger.webp" }
+        ],
+        "41": [
+            { row: 1, col: 2, img: "Parts/Chimp_Arm.webp" },
+            { row: 2, col: 3, img: "Parts/Cloven_Legs.webp" },
+            { row: 2, col: 2, img: "Parts/Wendigo_Arm.webp" },
+            { row: 2, col: 1, img: "Parts/Goliath_Body.webp" }
+        ],
+        "42": [
+            { row: 0, col: 3, img: "Parts/Brass_Pipe_Legs_Large_Icon.webp" },
+            { row: 0, col: 2, img: "Parts/Cannon_Mark_I_Large_Icon.webp" },
+            { row: 0, col: 1, img: "Parts/V-6_Hotrod_Large_Icon.webp" }
+        ],
+        "43": [
+            { row: 0, col: 3, img: "Parts/Riveter_Legs.webp" },
+            { row: 0, col: 2, img: "Parts/Gunner_Mark_I_Large_Icon.webp" },
+            { row: 0, col: 1, img: "Parts/Wind_Turbine.webp" }
+        ],
+        "44": [
+            { row: 1, col: 0, img: "Parts/Canine_Head.webp" },
+            { row: 1, col: 3, img: "Parts/Canine_Feet.webp" },
+            { row: 1, col: 2, img: "Parts/Canine_Claw_Large_Icon.webp" },
+            { row: 1, col: 1, img: "Parts/Canine_Body.webp" }
+        ],
+        "45": [
+            { row: 1, col: 0, img: "Parts/Rudo_Mask.webp" },
+            { row: 1, col: 2, img: "Parts/Wrestler_Arm.webp" }
+        ],
+        };
+
+        function handleClick(imgElement) {
+    const id = imgElement.getAttribute("data-id");
+    const detailTable = document.getElementById("detail-table");
+    detailTable.innerHTML = "";
+
+    // ✅ Entferne alten Marker, falls vorhanden
+    const oldMarker = document.querySelector(".image-marker");
+    if (oldMarker) {
+        oldMarker.remove();
+    }
+
+    // ✅ Marker-Div erstellen
+    const marker = document.createElement("div");
+    marker.classList.add("image-marker");
+    
+    // Positionierung relativ zum geklickten Bild
+    const rect = imgElement.getBoundingClientRect();
+
+    marker.style.position = "absolute";
+    marker.style.top = `${window.scrollY + rect.top}px`;
+    marker.style.left = `${window.scrollX + rect.left}px`;
+    marker.style.width = `${rect.width}px`;
+    marker.style.height = `${rect.height}px`;
+    marker.style.border = "2px solid red";
+    marker.style.pointerEvents = "none"; // Marker soll Klicks nicht blockieren
+    marker.style.zIndex = "999";
+
+    document.body.appendChild(marker);
+
+    const cellsToFill = ingredientMapping[id] || [];
+
+    for (let row = 0; row < 3; row++) {
+        const tr = document.createElement("tr");
+        for (let col = 0; col < 4; col++) {
+            const td = document.createElement("td");
+            const cellData = cellsToFill.find(c => c.row === row && c.col === col);
+            if (cellData) {
+                const img = document.createElement("img");
+                img.src = cellData.img;
+                img.alt = `Detail ${id} ${row}-${col}`;
+                img.classList.add("zoomed-img");
+                img.onclick = () => {
+                    renderSubDetail(id, row, col);
+                };
+                td.appendChild(img);
+            } else {
+                const emptyDiv = document.createElement("div");
+                emptyDiv.classList.add("empty-cell");
+                td.appendChild(emptyDiv);
+            }
+            tr.appendChild(td);
+        }
+        detailTable.appendChild(tr);
+    }
+}
+
+
+
+        // Primärzutat - Zeile - Spalte
+        const partDetailMapping = {
+            // Ancient Claw (id 1)
+            "1-0-0": [
+                { row: 0, col: 0, img: "Enhancements/Super_Charged.webp" },
+                { row: 1, col: 0, img: "Sekundaer/mechanical/1/Gyro_Battery_Icon.webp" },
+{ row: 2, col: 0, img: "Sekundaer/mechanical/2/Flux_Charger_Icon.webp" },
+{ row: 3, col: 0, img: "Sekundaer/mechanical/3/Liquid_Cell_Icon.webp" },
+{ row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutron_Reactor_Icon.webp" }
+            ],
+            "1-0-1": [
+                { row: 0, col: 0, img: "Enhancements/Quick.webp" },
+                { row: 1, col: 0, img: "Sekundaer/mechanical/1/Gyro_Battery_Icon.webp" },
+{ row: 2, col: 0, img: "Sekundaer/mechanical/2/Flux_Charger_Icon.webp" },
+{ row: 3, col: 0, img: "Sekundaer/mechanical/3/Liquid_Cell_Icon.webp" },
+{ row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutron_Reactor_Icon.webp" }
+            ],
+            "1-0-2": [
+                { row: 0, col: 0, img: "Enhancements/Efficient.webp" },
+                { row: 1, col: 0, img: "Sekundaer/mechanical/1/Gyro_Battery_Icon.webp" },
+{ row: 2, col: 0, img: "Sekundaer/mechanical/2/Flux_Charger_Icon.webp" },
+{ row: 3, col: 0, img: "Sekundaer/mechanical/3/Liquid_Cell_Icon.webp" },
+{ row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutron_Reactor_Icon.webp" }
+            ],
+            "1-0-3": [
+                { row: 0, col: 0, img: "Enhancements/Grounding.webp" },
+                { row: 1, col: 0, img: "Sekundaer/mechanical/1/Gyro_Battery_Icon.webp" },
+{ row: 2, col: 0, img: "Sekundaer/mechanical/2/Flux_Charger_Icon.webp" },
+{ row: 3, col: 0, img: "Sekundaer/mechanical/3/Liquid_Cell_Icon.webp" },
+{ row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutron_Reactor_Icon.webp" }
+            ],
+
+            // Big Eyeball (id 2)
+            "2-2-0": [
+                { row: 0, col: 0, img: "Enhancements/Grounding.webp" },
+                { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bubbling_Tonic_Icon.webp" },
+{ row: 2, col: 0, img: "Sekundaer/alchemical/2/Love_Potion_Icon.webp" },
+{ row: 3, col: 0, img: "Sekundaer/alchemical/3/Festering_Fluid_Icon.webp" },
+{ row: 4, col: 0, img: "Sekundaer/alchemical/4/Possessed_Brew_Icon.webp" }
+            ],
+            "2-2-2": [
+                { row: 0, col: 0, img: "Enhancements/Accurate.webp" },
+                { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bound_Ghost_Icon.webp" },
+{ row: 2, col: 0, img: "Sekundaer/alchemical/2/Haunted_Spirits_Icon.webp" },
+{ row: 3, col: 0, img: "Sekundaer/alchemical/3/Wailing_Soul_Icon.webp" },
+{ row: 4, col: 0, img: "Sekundaer/alchemical/4/Demonic_Essence_Icon.webp" }
+            ],
+
+            // Bone Pile (id 3)
+            "3-2-1": [
+                { row: 0, col: 0, img: "Enhancements/Slippery.webp" },
+                { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bowl_of_Ash_Icon.webp" },
+{ row: 2, col: 0, img: "Sekundaer/alchemical/2/Sulphur_Pinch_Icon.webp" },
+{ row: 3, col: 0, img: "Sekundaer/alchemical/3/Magic_Dust_Icon.webp" },
+{ row: 4, col: 0, img: "Sekundaer/alchemical/4/Star_Powder_Icon.webp" }
+            ],
+            "3-2-2": [
+                { row: 0, col: 0, img: "Enhancements/Regenerator.webp" }, 
+                { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bowl_of_Ash_Icon.webp" },
+{ row: 2, col: 0, img: "Sekundaer/alchemical/2/Sulphur_Pinch_Icon.webp" },
+{ row: 3, col: 0, img: "Sekundaer/alchemical/3/Magic_Dust_Icon.webp" },
+{ row: 4, col: 0, img: "Sekundaer/alchemical/4/Star_Powder_Icon.webp" }
+            ],
+            "3-2-3": [
+                { row: 0, col: 0, img: "Enhancements/Explosive.webp" },
+                { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bowl_of_Ash_Icon.webp" },
+{ row: 2, col: 0, img: "Sekundaer/alchemical/2/Sulphur_Pinch_Icon.webp" },
+{ row: 3, col: 0, img: "Sekundaer/alchemical/3/Magic_Dust_Icon.webp" },
+{ row: 4, col: 0, img: "Sekundaer/alchemical/4/Star_Powder_Icon.webp" }
+            ],
+
+            // Broken Heart (id 4)
+            "4-2-0": [
+                { row: 0, col: 0, img: "Enhancements/Efficient.webp" },
+                { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bowl_of_Ash_Icon.webp" },
+{ row: 2, col: 0, img: "Sekundaer/alchemical/2/Sulphur_Pinch_Icon.webp" },
+{ row: 3, col: 0, img: "Sekundaer/alchemical/3/Magic_Dust_Icon.webp" },
+{ row: 4, col: 0, img: "Sekundaer/alchemical/4/Star_Powder_Icon.webp" }
+            ],
+            "4-2-2": [
+                { row: 0, col: 0, img: "Enhancements/Disabling.webp" },
+                { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bound_Ghost_Icon.webp" },
+{ row: 2, col: 0, img: "Sekundaer/alchemical/2/Haunted_Spirits_Icon.webp" },
+{ row: 3, col: 0, img: "Sekundaer/alchemical/3/Wailing_Soul_Icon.webp" },
+{ row: 4, col: 0, img: "Sekundaer/alchemical/4/Demonic_Essence_Icon.webp" }
+            ],
+            "4-1-1": [
+                { row: 0, col: 0, img: "Enhancements/Tough.webp" },
+                { row: 1, col: 0, img: "Sekundaer/biological/1/Used_Dressing_Icon.webp" },
+{ row: 2, col: 0, img: "Sekundaer/biological/2/Coarse_Gauze_Icon.webp" },
+{ row: 3, col: 0, img: "Sekundaer/biological/3/Sterile_Bandage_Icon.webp" },
+{ row: 4, col: 0, img: "Sekundaer/biological/4/Synthetic_Cast_Icon.webp" }
+            ],
+            "4-2-1": [
+                { row: 0, col: 0, img: "Enhancements/Slippery.webp" },
+                { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bubbling_Tonic_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Love_Potion_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Festering_Fluid_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Possessed_Brew_Icon.webp" }
+            ],
+
+            // Burlap Sack (id 5)
+            "5-1-0": [
+                { row: 0, col: 0, img: "Enhancements/Strong.webp" },
+                { row: 1, col: 0, img: "Sekundaer/biological/1/Sewer_Sludge_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Glowing_Muck_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sticky_Goo_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Toxic_Ooze_Icon.webp" }
+            ],
+            "5-2-1": [
+                { row: 0, col: 0, img: "Enhancements/Super_Charged.webp" },
+                { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bound_Ghost_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Haunted_Spirits_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Wailing_Soul_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Demonic_Essence_Icon.webp" }
+            ],
+            "5-2-2": [
+                { row: 0, col: 0, img: "Enhancements/Acidic.webp" },
+                { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bowl_of_Ash_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Sulphur_Pinch_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Magic_Dust_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Star_Powder_Icon.webp" }
+            ],
+
+            // Caustic Juice (id 6)
+            "6-0-2": [
+                { row: 0, col: 0, img: "Enhancements/Explosive.webp" },
+                { row: 1, col: 0, img: "Sekundaer/mechanical/1/Spool_of_Wire_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Electro-Magnet_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Superconductor_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Positronic_Coil_Icon.webp" }
+            ],
+            "6-0-1": [
+                { row: 0, col: 0, img: "Enhancements/Quick.webp" },
+                { row: 1, col: 0, img: "Sekundaer/mechanical/1/Scrap_Iron_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Titanium_Alloy_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Arcadium_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutronium_Icon.webp" }
+            ],
+            "6-1-0": [
+                { row: 0, col: 0, img: "Enhancements/Legendary.webp" },
+                { row: 1, col: 0, img: "Sekundaer/biological/1/Used_Dressing_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Coarse_Gauze_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sterile_Bandage_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Synthetic_Cast_Icon.webp" }
+            ],
+            "6-1-1": [
+                { row: 0, col: 0, img: "Enhancements/Tough.webp" },
+                { row: 1, col: 0, img: "Sekundaer/biological/1/Used_Dressing_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Coarse_Gauze_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sterile_Bandage_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Synthetic_Cast_Icon.webp" }
+            ],
+            "6-2-3": [
+                { row: 0, col: 0, img: "Enhancements/Tough.webp" },
+                { row: 1, col: 0, img: "Sekundaer/alchemical/1/Mystic_Coral_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Magma_Core_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Astral_Geode_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Philosophy_Ore_Icon.webp" }
+
+            ],
+            "6-2-2": [
+                { row: 0, col: 0, img: "Enhancements/Regenerator.webp" },
+{ row: 1, col: 0, img: "Sekundaer/alchemical/1/Mystic_Coral_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Magma_Core_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Astral_Geode_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Philosophy_Ore_Icon.webp" }
+
+            ],
+
+            // Chains (id 7)
+            "7-2-3": [
+                { row: 0, col: 0, img: "Enhancements/Strong.webp" },
+{ row: 1, col: 0, img: "Sekundaer/alchemical/1/Bubbling_Tonic_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Love_Potion_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Festering_Fluid_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Possessed_Brew_Icon.webp" }
+
+            ],
+            "7-0-2": [
+                { row: 0, col: 0, img: "Enhancements/Celestial.webp" },{ row: 1, col: 0, img: "Sekundaer/mechanical/1/Worn_Spindle_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Squeaky_Gear_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Heavy_Cog_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Greasy_Sprocket_Icon.webp" }
+
+            ],
+
+            // Clown Shoes (id 8)
+        "8-0-0": [
+            { row: 0, col: 0, img: "Enhancements/Multi-Attack.webp" },{ row: 1, col: 0, img: "Sekundaer/mechanical/1/Spool_of_Wire_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Electro-Magnet_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Superconductor_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Positronic_Coil_Icon.webp" }
+
+        ],
+        "8-0-1": [
+            { row: 0, col: 0, img: "Enhancements/Slippery.webp" },{ row: 1, col: 0, img: "Sekundaer/mechanical/1/Spool_of_Wire_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Electro-Magnet_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Superconductor_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Positronic_Coil_Icon.webp" }
+
+        ],
+        "8-0-2": [
+            { row: 0, col: 0, img: "Enhancements/Multi-Attack.webp" },{ row: 1, col: 0, img: "Sekundaer/mechanical/1/Spool_of_Wire_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Electro-Magnet_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Superconductor_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Positronic_Coil_Icon.webp" }
+
+        ],
+        "8-0-3": [
+            { row: 0, col: 0, img: "Enhancements/Multi-Attack.webp" },{ row: 1, col: 0, img: "Sekundaer/mechanical/1/Spool_of_Wire_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Electro-Magnet_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Superconductor_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Positronic_Coil_Icon.webp" }
+        ],
+        "9-0-2": [
+            { row: 0, col: 0, img: "Enhancements/Grounding.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Bent_Screw_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Lock_Washer_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Hex_Nut_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Lag_Bolt_Icon.webp" }
+        ],
+        "9-1-2": [
+            { row: 0, col: 0, img: "Enhancements/Radioactive.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Sewer_Sludge_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Glowing_Muck_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sticky_Goo_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Toxic_Ooze_Icon.webp" }
+
+        ],
+        "9-2-2": [
+            { row: 0, col: 0, img: "Enhancements/Acidic.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Amethyst_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Ruby_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Emerald_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Diamond_Icon.webp" }
+
+        ],
+        "10-1-2": [
+            { row: 0, col: 0, img: "Enhancements/Legendary.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Dark_Ivy_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Thorned_Creeper_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Blood_Rose_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Nightshade_Icon.webp" }
+
+        ],
+        "10-2-0": [
+           { row: 0, col: 0, img: "Enhancements/Celestial.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Mystic_Coral_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Magma_Core_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Astral_Geode_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Philosophy_Ore_Icon.webp" }
+
+        ],
+        "11-2-0": [
+            { row: 0, col: 0, img: "Enhancements/Explosive.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bound_Ghost_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Haunted_Spirits_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Wailing_Soul_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Demonic_Essence_Icon.webp" }
+
+        ],
+        "11-0-2": [
+            { row: 0, col: 0, img: "Enhancements/Celestial.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Scrap_Iron_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Titanium_Alloy_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Arcadium_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutronium_Icon.webp" }
+
+        ],
+        "11-1-0": [
+            { row: 0, col: 0, img: "Enhancements/Efficient.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Growth_Serum_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Venom_Flask_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Cryogenic_Fluid_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Volatile_Plasma_Icon.webp" }
+
+        ],
+        "12-2-0": [
+{ row: 0, col: 0, img: "Enhancements/Accurate.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bound_Ghost_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Haunted_Spirits_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Wailing_Soul_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Demonic_Essence_Icon.webp" }
+
+        ],
+        "12-2-3": [
+{ row: 0, col: 0, img: "Enhancements/Slippery.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bowl_of_Ash_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Sulphur_Pinch_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Magic_Dust_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Star_Powder_Icon.webp" }
+
+        ],
+        "13-0-0": [
+{ row: 0, col: 0, img: "Enhancements/Explosive.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Bent_Screw_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Lock_Washer_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Hex_Nut_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Lag_Bolt_Icon.webp" }
+
+        ],
+        "13-0-1": [
+{ row: 0, col: 0, img: "Enhancements/Super_Charged.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Worn_Spindle_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Squeaky_Gear_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Heavy_Cog_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Greasy_Sprocket_Icon.webp" }
+
+        ],
+        "14-1-0": [
+{ row: 0, col: 0, img: "Enhancements/Slippery.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Growth_Serum_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Venom_Flask_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Cryogenic_Fluid_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Volatile_Plasma_Icon.webp" }
+
+        ],
+        "14-1-2": [
+{ row: 0, col: 0, img: "Enhancements/Efficient.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Used_Dressing_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Coarse_Gauze_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sterile_Bandage_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Synthetic_Cast_Icon.webp" }
+
+        ],
+        "14-2-2": [
+{ row: 0, col: 0, img: "Enhancements/Grounding.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Amethyst_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Ruby_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Emerald_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Diamond_Icon.webp" }
+
+        ],
+        "15-0-0": [
+{ row: 0, col: 0, img: "Enhancements/Accurate.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Scrap_Iron_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Titanium_Alloy_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Arcadium_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutronium_Icon.webp" }
+
+        ],
+        "15-1-1": [
+{ row: 0, col: 0, img: "Enhancements/Tough.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Sewer_Sludge_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Glowing_Muck_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sticky_Goo_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Toxic_Ooze_Icon.webp" }
+
+        ],
+        "15-2-0": [
+{ row: 0, col: 0, img: "Enhancements/Acidic.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bowl_of_Ash_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Sulphur_Pinch_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Magic_Dust_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Star_Powder_Icon.webp" }
+
+        ],
+        "16-0-3": [
+{ row: 0, col: 0, img: "Enhancements/Super_Charged.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Spool_of_Wire_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Electro-Magnet_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Superconductor_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Positronic_Coil_Icon.webp" }
+
+        ],
+        "16-0-2": [
+{ row: 0, col: 0, img: "Enhancements/Radioactive.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Spool_of_Wire_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Electro-Magnet_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Superconductor_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Positronic_Coil_Icon.webp" }
+
+        ],
+        "16-0-1": [
+{ row: 0, col: 0, img: "Enhancements/Tough.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Bent_Screw_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Lock_Washer_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Hex_Nut_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Lag_Bolt_Icon.webp" }
+
+        ],
+        "16-1-0": [
+{ row: 0, col: 0, img: "Enhancements/Slippery.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Used_Dressing_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Coarse_Gauze_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sterile_Bandage_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Synthetic_Cast_Icon.webp" }
+
+        ],
+        "16-1-3": [
+{ row: 0, col: 0, img: "Enhancements/Slippery.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Growth_Serum_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Venom_Flask_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Cryogenic_Fluid_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Volatile_Plasma_Icon.webp" }
+
+        ],
+        "16-1-1": [
+{ row: 0, col: 0, img: "Enhancements/Super_Charged.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Sewer_Sludge_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Glowing_Muck_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sticky_Goo_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Toxic_Ooze_Icon.webp" }
+
+        ],
+        "16-2-2": [
+            { row: 0, col: 0, img: "Enhancements/Celestial.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bubbling_Tonic_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Love_Potion_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Festering_Fluid_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Possessed_Brew_Icon.webp" }
+
+        ],
+        // Honeycomb (id 17)
+        "17-0-3": [
+            { row: 0, col: 0, img: "Enhancements/Disabling.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Worn_Spindle_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Squeaky_Gear_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Heavy_Cog_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Greasy_Sprocket_Icon.webp" }
+
+        ],
+        "17-1-1": [
+            { row: 0, col: 0, img: "Enhancements/Slippery.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Dark_Ivy_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Thorned_Creeper_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Blood_Rose_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Nightshade_Icon.webp" }
+
+        ],
+        "17-1-2": [
+            { row: 0, col: 0, img: "Enhancements/Explosive.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Growth_Serum_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Venom_Flask_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Cryogenic_Fluid_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Volatile_Plasma_Icon.webp" }
+            
+
+        ],
+
+        // Horned Skull (id 18)
+        "18-0-0": [
+            { row: 0, col: 0, img: "Enhancements/Grounding.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Spool_of_Wire_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Electro-Magnet_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Superconductor_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Positronic_Coil_Icon.webp" }
+
+        ],
+        "18-2-0": [
+            { row: 0, col: 0, img: "Enhancements/Tough.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bubbling_Tonic_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Love_Potion_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Festering_Fluid_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Possessed_Brew_Icon.webp" }
+
+        ],
+
+        // Horrid Tentacle (id 19)
+        "19-0-3": [
+            { row: 0, col: 0, img: "Enhancements/Explosive.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Scrap_Iron_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Titanium_Alloy_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Arcadium_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutronium_Icon.webp" }
+
+        ],
+        "19-0-2": [
+            { row: 0, col: 0, img: "Enhancements/Radioactive.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Spool_of_Wire_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Electro-Magnet_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Superconductor_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Positronic_Coil_Icon.webp" }
+
+        ],
+        "19-1-0": [
+            { row: 0, col: 0, img: "Enhancements/Grounding.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Dark_Ivy_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Thorned_Creeper_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Blood_Rose_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Nightshade_Icon.webp" }
+
+        ],
+        "19-1-3": [
+            { row: 0, col: 0, img: "Enhancements/Acidic.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Sewer_Sludge_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Glowing_Muck_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sticky_Goo_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Toxic_Ooze_Icon.webp" }
+
+        ],
+        "19-1-2": [
+            { row: 0, col: 0, img: "Enhancements/Grounding.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Sewer_Sludge_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Glowing_Muck_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sticky_Goo_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Toxic_Ooze_Icon.webp" }
+
+        ],
+
+        // Infested Log (id 20)
+        "20-1-0": [
+            { row: 0, col: 0, img: "Enhancements/Regenerator.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Dark_Ivy_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Thorned_Creeper_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Blood_Rose_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Nightshade_Icon.webp" }
+
+        ],
+        "20-1-3": [
+            { row: 0, col: 0, img: "Enhancements/Strong.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Nerve_Fibre_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Fresh_Tendon_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Dried_Sinew_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Solid_Muscle_Icon.webp" }
+
+        ],
+        "20-1-2": [
+            { row: 0, col: 0, img: "Enhancements/Acidic.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Sewer_Sludge_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Glowing_Muck_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sticky_Goo_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Toxic_Ooze_Icon.webp" }
+
+        ],
+
+        // Jumper Cables (id 21)
+        "21-0-0": [
+            { row: 0, col: 0, img: "Enhancements/Radioactive.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Gyro_Battery_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Flux_Charger_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Liquid_Cell_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutron_Reactor_Icon.webp" }
+
+        ],
+        "21-0-2": [
+            { row: 0, col: 0, img: "Enhancements/Accurate.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Gyro_Battery_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Flux_Charger_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Liquid_Cell_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutron_Reactor_Icon.webp" }
+
+        ],
+        "21-0-1": [
+            { row: 0, col: 0, img: "Enhancements/Tough.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Spool_of_Wire_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Electro-Magnet_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Superconductor_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Positronic_Coil_Icon.webp" }
+
+        ],
+        "21-1-3": [
+            { row: 0, col: 0, img: "Enhancements/Radioactive.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Used_Dressing_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Coarse_Gauze_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sterile_Bandage_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Synthetic_Cast_Icon.webp" }
+
+        ],
+        "21-2-2": [
+            { row: 0, col: 0, img: "Enhancements/Tough.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Mystic_Coral_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Magma_Core_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Astral_Geode_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Philosophy_Ore_Icon.webp" }
+
+        ],
+
+        // Leviathan Flesh (id 22)
+        "22-0-0": [
+            { row: 0, col: 0, img: "Enhancements/Strong.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Worn_Spindle_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Squeaky_Gear_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Heavy_Cog_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Greasy_Sprocket_Icon.webp" }
+
+        ],
+        "22-1-0": [
+            { row: 0, col: 0, img: "Enhancements/Strong.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Used_Dressing_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Coarse_Gauze_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sterile_Bandage_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Synthetic_Cast_Icon.webp" }
+
+        ],
+        "22-1-3": [
+            { row: 0, col: 0, img: "Enhancements/Quick.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Used_Dressing_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Coarse_Gauze_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sterile_Bandage_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Synthetic_Cast_Icon.webp" }
+
+        ],
+        "22-1-2": [
+            { row: 0, col: 0, img: "Enhancements/Acidic.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Nerve_Fibre_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Fresh_Tendon_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Dried_Sinew_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Solid_Muscle_Icon.webp" }
+
+        ],
+        "22-2-2": [
+            { row: 0, col: 0, img: "Enhancements/Tough.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bubbling_Tonic_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Love_Potion_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Festering_Fluid_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Possessed_Brew_Icon.webp" }
+
+        ],
+        // For "23" (Manacles)
+        "23-0-2": [
+            { row: 0, col: 0, img: "Enhancements/Accurate.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Bent_Screw_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Lock_Washer_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Hex_Nut_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Lag_Bolt_Icon.webp" }
+
+        ],
+        "23-1-3": [
+            { row: 0, col: 0, img: "Enhancements/Slippery.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Sewer_Sludge_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Glowing_Muck_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sticky_Goo_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Toxic_Ooze_Icon.webp" }
+
+        ],
+        "23-2-3": [
+            { row: 0, col: 0, img: "Enhancements/Celestial.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Mystic_Coral_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Magma_Core_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Astral_Geode_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Philosophy_Ore_Icon.webp" }
+
+        ],
+        "23-2-2": [
+            { row: 0, col: 0, img: "Enhancements/Accurate.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bound_Ghost_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Haunted_Spirits_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Wailing_Soul_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Demonic_Essence_Icon.webp" }
+
+        ],
+        "23-2-1": [
+            { row: 0, col: 0, img: "Enhancements/Slippery.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bound_Ghost_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Haunted_Spirits_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Wailing_Soul_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Demonic_Essence_Icon.webp" }
+
+        ],
+
+        // For "24" (Metal Platter)
+        "24-0-0": [
+            { row: 0, col: 0, img: "Enhancements/Celestial.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Worn_Spindle_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Squeaky_Gear_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Heavy_Cog_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Greasy_Sprocket_Icon.webp" }
+
+        ],
+        "24-0-3": [
+            { row: 0, col: 0, img: "Enhancements/Efficient.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Worn_Spindle_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Squeaky_Gear_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Heavy_Cog_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Greasy_Sprocket_Icon.webp" }
+
+        ],
+        "24-0-2": [
+            { row: 0, col: 0, img: "Enhancements/Efficient.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Scrap_Iron_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Titanium_Alloy_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Arcadium_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutronium_Icon.webp" }
+
+        ],
+        "24-0-1": [
+            { row: 0, col: 0, img: "Enhancements/Slippery.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Bent_Screw_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Lock_Washer_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Hex_Nut_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Lag_Bolt_Icon.webp" }
+
+        ],
+        "24-1-0": [
+            { row: 0, col: 0, img: "Enhancements/Accurate.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Sewer_Sludge_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Glowing_Muck_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sticky_Goo_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Toxic_Ooze_Icon.webp" }
+
+        ],
+        "24-1-2": [
+            { row: 0, col: 0, img: "Enhancements/Quick.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Used_Dressing_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Coarse_Gauze_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sterile_Bandage_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Synthetic_Cast_Icon.webp" }
+
+        ],
+        "24-1-1": [
+            { row: 0, col: 0, img: "Enhancements/Super_Charged.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Nerve_Fibre_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Fresh_Tendon_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Dried_Sinew_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Solid_Muscle_Icon.webp" }
+
+        ],
+        "24-2-2": [
+            { row: 0, col: 0, img: "Enhancements/Strong.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bubbling_Tonic_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Love_Potion_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Festering_Fluid_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Possessed_Brew_Icon.webp" }
+
+        ],
+        "24-2-1": [
+            { row: 0, col: 0, img: "Enhancements/Quick.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Mystic_Coral_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Magma_Core_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Astral_Geode_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Philosophy_Ore_Icon.webp" }
+
+        ],
+
+        // For "25" (Mud Bucket)
+        "25-2-3": [
+            { row: 0, col: 0, img: "Enhancements/Multi-Attack.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bound_Ghost_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Haunted_Spirits_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Wailing_Soul_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Demonic_Essence_Icon.webp" }
+
+        ],
+        "25-0-2": [
+            { row: 0, col: 0, img: "Enhancements/Strong.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Gyro_Battery_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Flux_Charger_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Liquid_Cell_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutron_Reactor_Icon.webp" }
+
+        ],
+        "25-2-2": [
+            { row: 0, col: 0, img: "Enhancements/Efficient.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Mystic_Coral_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Magma_Core_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Astral_Geode_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Philosophy_Ore_Icon.webp" }
+
+        ],
+        "25-2-1": [
+            { row: 0, col: 0, img: "Enhancements/Tough.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Mystic_Coral_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Magma_Core_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Astral_Geode_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Philosophy_Ore_Icon.webp" }
+
+        ],
+        // Mutant Larva (id 26)
+        "26-1-3": [
+            { row: 0, col: 0, img: "Enhancements/Disabling.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Growth_Serum_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Venom_Flask_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Cryogenic_Fluid_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Volatile_Plasma_Icon.webp" }
+
+        ],
+        "26-1-2": [
+            { row: 0, col: 0, img: "Enhancements/Slippery.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Dark_Ivy_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Thorned_Creeper_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Blood_Rose_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Nightshade_Icon.webp" }
+
+        ],
+        "26-1-1": [
+            { row: 0, col: 0, img: "Enhancements/Quick.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Growth_Serum_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Venom_Flask_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Cryogenic_Fluid_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Volatile_Plasma_Icon.webp" }
+
+        ],
+
+        // Power Crystal (id 27)
+        "27-0-0": [
+            { row: 0, col: 0, img: "Enhancements/Efficient.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Spool_of_Wire_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Electro-Magnet_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Superconductor_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Positronic_Coil_Icon.webp" }
+
+        ],
+        "27-2-0": [
+            { row: 0, col: 0, img: "Enhancements/Regenerator.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Amethyst_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Ruby_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Emerald_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Diamond_Icon.webp" }
+
+        ],
+        "27-2-3": [
+            { row: 0, col: 0, img: "Enhancements/Regenerator.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Amethyst_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Ruby_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Emerald_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Diamond_Icon.webp" }
+
+        ],
+        "27-2-2": [
+            { row: 0, col: 0, img: "Enhancements/Tough.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Amethyst_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Ruby_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Emerald_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Diamond_Icon.webp" }
+
+        ],
+        "27-2-1": [
+            { row: 0, col: 0, img: "Enhancements/Super_Charged.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Amethyst_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Ruby_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Emerald_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Diamond_Icon.webp" }
+
+        ],
+
+        // Pumpkin (id 28)
+        "28-0-0": [
+            { row: 0, col: 0, img: "Enhancements/Explosive.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Scrap_Iron_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Titanium_Alloy_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Arcadium_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutronium_Icon.webp" }
+
+        ],
+        "28-1-2": [
+            { row: 0, col: 0, img: "Enhancements/Multi-Attack.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Dark_Ivy_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Thorned_Creeper_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Blood_Rose_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Nightshade_Icon.webp" }
+
+        ],
+        "28-2-2": [
+            { row: 0, col: 0, img: "Enhancements/Multi-Attack.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bubbling_Tonic_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Love_Potion_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Festering_Fluid_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Possessed_Brew_Icon.webp" }
+
+        ],
+
+        // Rattlesnake (id 29)
+        "29-1-2": [
+            { row: 0, col: 0, img: "Enhancements/Multi-Attack.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Growth_Serum_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Venom_Flask_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Cryogenic_Fluid_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Volatile_Plasma_Icon.webp" }
+
+        ],
+        "29-1-1": [
+            { row: 0, col: 0, img: "Enhancements/Slippery.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Growth_Serum_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Venom_Flask_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Cryogenic_Fluid_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Volatile_Plasma_Icon.webp" }
+
+        ],
+        "29-2-3": [
+            { row: 0, col: 0, img: "Enhancements/Acidic.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bound_Ghost_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Haunted_Spirits_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Wailing_Soul_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Demonic_Essence_Icon.webp" }
+
+        ],
+        "29-2-1": [
+            { row: 0, col: 0, img: "Enhancements/Quick.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bowl_of_Ash_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Sulphur_Pinch_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Magic_Dust_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Star_Powder_Icon.webp" }
+
+        ],
+        // Rotary Engine (id 30)
+        "30-0-3": [
+            { row: 0, col: 0, img: "Enhancements/Super_Charged.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Bent_Screw_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Lock_Washer_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Hex_Nut_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Lag_Bolt_Icon.webp" }
+
+        ],
+        "30-0-2": [
+            { row: 0, col: 0, img: "Enhancements/Accurate.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Scrap_Iron_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Titanium_Alloy_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Arcadium_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutronium_Icon.webp" }
+
+        ],
+        "30-0-1": [
+            { row: 0, col: 0, img: "Enhancements/Super_Charged.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Worn_Spindle_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Squeaky_Gear_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Heavy_Cog_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Greasy_Sprocket_Icon.webp" }
+
+        ],
+
+        // Rotten Fish (id 31)
+        "31-1-0": [
+            { row: 0, col: 0, img: "Enhancements/Acidic.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Dark_Ivy_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Thorned_Creeper_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Blood_Rose_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Nightshade_Icon.webp" }
+
+        ],
+        "31-1-3": [
+            { row: 0, col: 0, img: "Enhancements/Legendary.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Dark_Ivy_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Thorned_Creeper_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Blood_Rose_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Nightshade_Icon.webp" }
+
+        ],
+        "31-1-2": [
+            { row: 0, col: 0, img: "Enhancements/Radioactive.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Dark_Ivy_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Thorned_Creeper_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Blood_Rose_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Nightshade_Icon.webp" }
+
+        ],
+        "31-1-1": [
+            { row: 0, col: 0, img: "Enhancements/Slippery.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Dark_Ivy_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Thorned_Creeper_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Blood_Rose_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Nightshade_Icon.webp" }
+
+        ],
+
+        // Rusty Hook (id 32)
+        "32-0-2": [
+            { row: 0, col: 0, img: "Enhancements/Efficient.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Scrap_Iron_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Titanium_Alloy_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Arcadium_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutronium_Icon.webp" }
+
+        ],
+        "32-2-2": [
+            { row: 0, col: 0, img: "Enhancements/Tough.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bowl_of_Ash_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Sulphur_Pinch_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Magic_Dust_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Star_Powder_Icon.webp" }
+
+        ],
+
+        // Saw Blade (id 33)
+        "33-0-2": [
+            { row: 0, col: 0, img: "Enhancements/Super_Charged.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Worn_Spindle_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Squeaky_Gear_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Heavy_Cog_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Greasy_Sprocket_Icon.webp" }
+
+        ],
+        "33-1-2": [
+            { row: 0, col: 0, img: "Enhancements/Accurate.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Used_Dressing_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Coarse_Gauze_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sterile_Bandage_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Synthetic_Cast_Icon.webp" }
+
+        ],
+
+        // Scary Mask (id 34)
+        "34-0-0": [
+            { row: 0, col: 0, img: "Enhancements/Legendary.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Bent_Screw_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Lock_Washer_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Hex_Nut_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Lag_Bolt_Icon.webp" }
+
+        ],
+        "34-2-0": [
+            { row: 0, col: 0, img: "Enhancements/Regenerator.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Mystic_Coral_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Magma_Core_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Astral_Geode_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Philosophy_Ore_Icon.webp" }
+
+        ],
+
+        // Scrap Heap (id 35)
+        "35-0-0": [
+            { row: 0, col: 0, img: "Enhancements/Super_Charged.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Gyro_Battery_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Flux_Charger_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Liquid_Cell_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutron_Reactor_Icon.webp" }
+
+        ],
+        "35-0-3": [
+            { row: 0, col: 0, img: "Enhancements/Legendary.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Bent_Screw_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Lock_Washer_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Hex_Nut_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Lag_Bolt_Icon.webp" }
+
+        ],
+        "35-0-2": [
+            { row: 0, col: 0, img: "Enhancements/Celestial.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Worn_Spindle_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Squeaky_Gear_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Heavy_Cog_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Greasy_Sprocket_Icon.webp" }
+
+        ],
+        // Sharp Fang (id 36)
+        "36-2-0": [
+            { row: 0, col: 0, img: "Enhancements/Strong.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bound_Ghost_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Haunted_Spirits_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Wailing_Soul_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Demonic_Essence_Icon.webp" }
+
+        ],
+        "36-1-3": [
+            { row: 0, col: 0, img: "Enhancements/Multi-Attack.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Dark_Ivy_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Thorned_Creeper_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Blood_Rose_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Nightshade_Icon.webp" }
+
+        ],
+        "36-1-2": [
+            { row: 0, col: 0, img: "Enhancements/Radioactive.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Growth_Serum_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Venom_Flask_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Cryogenic_Fluid_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Volatile_Plasma_Icon.webp" }
+
+        ],
+
+        // Shrunken Head (id 37)
+        "37-2-0": [
+            { row: 0, col: 0, img: "Enhancements/Tough.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Amethyst_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Ruby_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Emerald_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Diamond_Icon.webp" }
+
+        ],
+        "37-2-2": [
+            { row: 0, col: 0, img: "Enhancements/Celestial.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bound_Ghost_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Haunted_Spirits_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Wailing_Soul_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Demonic_Essence_Icon.webp" }
+
+        ],
+
+        // Spiked Club (id 38)
+        "38-0-2": [
+            { row: 0, col: 0, img: "Enhancements/Disabling.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Bent_Screw_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Lock_Washer_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Hex_Nut_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Lag_Bolt_Icon.webp" }
+
+        ],
+        "38-1-2": [
+            { row: 0, col: 0, img: "Enhancements/Slippery.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Used_Dressing_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Coarse_Gauze_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sterile_Bandage_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Synthetic_Cast_Icon.webp" }
+
+        ],
+        "38-2-2": [
+            { row: 0, col: 0, img: "Enhancements/Disabling.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Mystic_Coral_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Magma_Core_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Astral_Geode_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Philosophy_Ore_Icon.webp" }
+
+        ],
+
+        // Spiny Crab (id 39)
+        "39-0-2": [
+            { row: 0, col: 0, img: "Enhancements/Explosive.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Bent_Screw_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Lock_Washer_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Hex_Nut_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Lag_Bolt_Icon.webp" }
+
+        ],
+        "39-1-2": [
+            { row: 0, col: 0, img: "Enhancements/Multi-Attack.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Sewer_Sludge_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Glowing_Muck_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Sticky_Goo_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Toxic_Ooze_Icon.webp" }
+
+        ],
+
+        // Stag Beetle (id 40)
+        "40-1-2": [
+            { row: 0, col: 0, img: "Enhancements/Disabling.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Growth_Serum_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Venom_Flask_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Cryogenic_Fluid_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Volatile_Plasma_Icon.webp" }
+
+        ],
+        "40-2-0": [
+            { row: 0, col: 0, img: "Enhancements/Legendary.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Amethyst_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Ruby_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Emerald_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Diamond_Icon.webp" }
+
+        ],
+        "40-2-3": [
+            { row: 0, col: 0, img: "Enhancements/Legendary.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Amethyst_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Ruby_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Emerald_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Diamond_Icon.webp" }
+
+        ],
+        "40-2-2": [
+            { row: 0, col: 0, img: "Enhancements/Legendary.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Amethyst_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Ruby_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Emerald_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Diamond_Icon.webp" }
+
+        ],
+        "40-2-1": [
+            { row: 0, col: 0, img: "Enhancements/Tough.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Amethyst_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Ruby_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Emerald_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Diamond_Icon.webp" }
+
+
+        ],
+        "41-1-2": [
+            { row: 0, col: 0, img: "Enhancements/Strong.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Nerve_Fibre_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Fresh_Tendon_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Dried_Sinew_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Solid_Muscle_Icon.webp" }
+
+        ],
+        "41-2-3": [
+            { row: 0, col: 0, img: "Enhancements/Regenerator.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bubbling_Tonic_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Love_Potion_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Festering_Fluid_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Possessed_Brew_Icon.webp" }
+
+        ],
+        "41-2-2": [
+            { row: 0, col: 0, img: "Enhancements/Disabling.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bowl_of_Ash_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Sulphur_Pinch_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Magic_Dust_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Star_Powder_Icon.webp" }
+
+        ],
+        "41-2-1": [
+            { row: 0, col: 0, img: "Enhancements/Tough.webp" }, { row: 1, col: 0, img: "Sekundaer/alchemical/1/Bubbling_Tonic_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/alchemical/2/Love_Potion_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/alchemical/3/Festering_Fluid_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/alchemical/4/Possessed_Brew_Icon.webp" }
+
+        ],
+        "42-0-3": [
+            { row: 0, col: 0, img: "Enhancements/Accurate.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Scrap_Iron_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Titanium_Alloy_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Arcadium_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutronium_Icon.webp" }
+
+        ],
+        "42-0-2": [
+            { row: 0, col: 0, img: "Enhancements/Super_Charged.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Gyro_Battery_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Flux_Charger_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Liquid_Cell_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutron_Reactor_Icon.webp" }
+
+        ],
+        "42-0-1": [
+            { row: 0, col: 0, img: "Enhancements/Super_Charged.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Gyro_Battery_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Flux_Charger_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Liquid_Cell_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutron_Reactor_Icon.webp" }
+
+        ],
+        "43-0-3": [
+            { row: 0, col: 0, img: "Enhancements/Radioactive.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Gyro_Battery_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Flux_Charger_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Liquid_Cell_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutron_Reactor_Icon.webp" }
+
+        ],
+        "43-0-2": [
+            { row: 0, col: 0, img: "Enhancements/Legendary.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Worn_Spindle_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Squeaky_Gear_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Heavy_Cog_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Greasy_Sprocket_Icon.webp" }
+
+        ],
+        "43-0-1": [
+            { row: 0, col: 0, img: "Enhancements/Quick.webp" }, { row: 1, col: 0, img: "Sekundaer/mechanical/1/Scrap_Iron_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/mechanical/2/Titanium_Alloy_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/mechanical/3/Arcadium_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/mechanical/4/Neutronium_Icon.webp" }
+
+        ],
+        // Wolf Blood (id 44)
+        "44-1-0": [
+            { row: 0, col: 0, img: "Enhancements/Quick.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Nerve_Fibre_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Fresh_Tendon_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Dried_Sinew_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Solid_Muscle_Icon.webp" }
+
+        ],
+        "44-1-3": [
+            { row: 0, col: 0, img: "Enhancements/Quick.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Nerve_Fibre_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Fresh_Tendon_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Dried_Sinew_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Solid_Muscle_Icon.webp" }
+
+        ],
+        "44-1-2": [
+            { row: 0, col: 0, img: "Enhancements/Quick.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Nerve_Fibre_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Fresh_Tendon_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Dried_Sinew_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Solid_Muscle_Icon.webp" }
+
+        ],
+        "44-1-1": [
+            { row: 0, col: 0, img: "Enhancements/Quick.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Nerve_Fibre_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Fresh_Tendon_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Dried_Sinew_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Solid_Muscle_Icon.webp" }
+
+        ],
+
+        // Wrestler Mask (id 45)
+        "45-1-0": [
+            { row: 0, col: 0, img: "Enhancements/Multi-Attack.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Nerve_Fibre_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Fresh_Tendon_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Dried_Sinew_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Solid_Muscle_Icon.webp" }
+
+        ],
+        "45-1-2": [
+            { row: 0, col: 0, img: "Enhancements/Strong.webp" }, { row: 1, col: 0, img: "Sekundaer/biological/1/Nerve_Fibre_Icon.webp" }, { row: 2, col: 0, img: "Sekundaer/biological/2/Fresh_Tendon_Icon.webp" }, { row: 3, col: 0, img: "Sekundaer/biological/3/Dried_Sinew_Icon.webp" }, { row: 4, col: 0, img: "Sekundaer/biological/4/Solid_Muscle_Icon.webp" }
+
+        ]
+        }
+
+        function renderSubDetail(partId, row, col) {
+        const key = `${partId}-${row}-${col}`;
+        const data = partDetailMapping[key] || [];
+
+        const subTable = document.getElementById("sub-detail-table");
+        subTable.innerHTML = "";
+
+        for (let i = 0; i < 5; i++) {
+            const tr = document.createElement("tr");
+            for (let j = 0; j < 1; j++) {
+            const td = document.createElement("td");
+            const imgData = data.find(d => d.row === i && d.col === j);
+            if (imgData) {
+                const img = document.createElement("img");
+                img.src = imgData.img;
+                td.appendChild(img);
+            }
+            tr.appendChild(td);
+            }
+            subTable.appendChild(tr);
+        }
+        }
+            
+        </script>
+
+</body>
+</html>
